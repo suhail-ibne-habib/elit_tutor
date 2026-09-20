@@ -22,11 +22,15 @@ app.use(
   }),
 );
 
-app.all("/api/auth/*splat", toNodeHandler(auth));
+app.all("/api/auth/{*splat}", toNodeHandler(auth));
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
+
+app.get("/", (_req, res) => {
+  res.json({ ok: true, service: "elite-api" });
+});
 
 app.get("/health", (_req, res) => {
   res.send("OK");

@@ -5,7 +5,9 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { ROLES } from "../constants.js";
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI, {
-  family: 4,
+  serverSelectionTimeoutMS: 8000,
+  connectTimeoutMS: 8000,
+  ...(process.env.FORCE_IPV4_DNS === "true" ? { family: 4 } : {}),
 });
 
 const authDb = mongoClient.db(process.env.DB_NAME);

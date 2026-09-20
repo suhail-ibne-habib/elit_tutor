@@ -3,11 +3,11 @@ import connectDB from "./src/db/connection.js";
 import { mongoClient } from "./src/lib/auth.js";
 import app from "./src/app.js";
 
+const port = Number(process.env.PORT) || 8000;
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running on port ${port}`);
 });
-
 
 async function start() {
   await connectDB();
@@ -15,6 +15,5 @@ async function start() {
 }
 
 start().catch((error) => {
-  console.error("Failed to start server", error);
-  process.exit(1);
+  console.error("Failed to connect to database", error);
 });
