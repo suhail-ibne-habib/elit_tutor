@@ -3,13 +3,15 @@ import connectDB from "./src/db/connection.js";
 import { mongoClient } from "./src/lib/auth.js";
 import app from "./src/app.js";
 
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
+
+
 async function start() {
   await connectDB();
   await mongoClient.connect();
-
-  app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-  });
 }
 
 start().catch((error) => {
