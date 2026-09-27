@@ -46,7 +46,7 @@ export function LoginForm({ title = "Sign in", intro }: LoginFormProps) {
 
   return (
     <div className="auth-card">
-      <img className="logo-lg" src="/assets/images/logo.svg" alt="" />
+      <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
       <h3>{title}</h3>
       {intro ? <p className="tiny">{intro}</p> : null}
       <AppForm form={form} onSubmit={onSubmit}>

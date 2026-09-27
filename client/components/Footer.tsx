@@ -12,8 +12,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div>
           <Link className="brand" href="/">
-            <img src="/assets/images/logo.svg" alt="" />
-            Elite
+            <img src="/assets/images/logo-mark.png" alt="Elite Tuition Media Bangladesh" />
           </Link>
           <p>A tuition and tutor searching platform for guardians, students, and professional tutors.</p>
         </div>

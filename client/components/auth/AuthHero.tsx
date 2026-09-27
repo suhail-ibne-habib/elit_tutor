@@ -14,7 +14,7 @@ export function AuthHero() {
 
   return (
     <div className="auth-card">
-      <img className="logo-lg" src="/assets/images/logo.svg" alt="" />
+      <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
       <h3>Signed in</h3>
       <p className="tiny">
         {user.name} · {user.role}

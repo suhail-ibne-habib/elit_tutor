@@ -37,8 +37,7 @@ export default function Header() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="container nav">
         <Link className="brand" href="/">
-          <img src="/assets/images/logo.svg" alt="Elite logo" />
-          Elite
+          <img src="/assets/images/logo-mark.png" alt="Elite Tuition Media Bangladesh" />
         </Link>
         <ul className="nav-links">
           {links.map((link) => (

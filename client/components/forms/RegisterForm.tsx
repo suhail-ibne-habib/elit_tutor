@@ -55,7 +55,7 @@ export function RegisterForm() {
 
   return (
     <div className="auth-card">
-      <img className="logo-lg" src="/assets/images/logo.svg" alt="" />
+      <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
       <h3>Create account</h3>
       <AppForm form={form} onSubmit={onSubmit}>
         <TextField name="name" label="Full name" placeholder="Your name" />
