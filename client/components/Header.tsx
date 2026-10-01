@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LogoutButton } from "@/components/auth/LogoutButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/tutors", label: "Find Tutors" },
+  { href: "/request-tuition", label: "Request Tuition" },
   { href: "/tuitions", label: "Find Tuitions" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -49,9 +50,10 @@ export default function Header() {
           ))}
         </ul>
         <div className="nav-actions">
+          <ThemeToggle />
           {user ? (
             <>
-              {user.role === "admin" ? (
+              {user.role === "admin" || user.role === "editor" ? (
                 <Link className="btn btn-ghost" href="/dashboard">
                   Dashboard
                 </Link>
@@ -86,7 +88,7 @@ export default function Header() {
         ))}
         {user ? (
           <>
-            {user.role === "admin" ? <Link href="/dashboard">Dashboard</Link> : null}
+            {user.role === "admin" || user.role === "editor" ? <Link href="/dashboard">Dashboard</Link> : null}
             <LogoutButton />
           </>
         ) : (

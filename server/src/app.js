@@ -3,8 +3,6 @@ import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.js";
 import tuitionRoutes from "./routes/tuition.routes.js";
-import teacherRoutes from "./routes/teacher.routes.js";
-import applicationRoutes from "./routes/application.routes.js";
 import sessionRoutes from "./routes/auth.routes.js";
 import { errorHandler, notFound } from "./middlewares/error.middleware.js";
 
@@ -38,8 +36,6 @@ app.get("/health", (_req, res) => {
 
 app.use("/api/session", sessionRoutes);
 app.use("/api/tuitions", tuitionRoutes);
-app.use("/api/teachers", teacherRoutes);
-app.use("/api/applications", applicationRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

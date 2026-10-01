@@ -26,11 +26,11 @@ export default function ContactForms() {
     const data = Object.fromEntries(new FormData(event.currentTarget));
     if (!data.subject || !data.area) {
       setApplyOk("");
-      setApplyError("Choose a subject and area so we can match you faster.");
+      setApplyError("Choose a subject and area so we can review the request faster.");
       return;
     }
     setApplyError("");
-    setApplyOk("Requirement posted. Verified tutors will start applying shortly.");
+    setApplyOk("Requirement captured. Submit the full tuition request form to send it for staff approval.");
   }
 
   return (

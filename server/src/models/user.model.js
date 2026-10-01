@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: Object.values(ROLES),
-      default: ROLES.PARENT,
+      default: ROLES.VIEWER,
     },
     phone: String,
   },

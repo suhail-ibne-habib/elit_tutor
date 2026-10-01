@@ -9,7 +9,12 @@ export function AuthHero() {
   const { user } = useAuth();
 
   if (!user) {
-    return <LoginForm title="Welcome to Elite" intro="Login to post a tuition or apply as a tutor." />;
+    return (
+      <LoginForm
+        title="Welcome to Elite"
+        intro="Staff members can sign in here to review, approve, and publish tuition requests."
+      />
+    );
   }
 
   return (
@@ -20,13 +25,13 @@ export function AuthHero() {
         {user.name} · {user.role}
       </p>
       <div className="mt-4 grid gap-3">
-        {user.role === "admin" ? (
+        {user.role === "admin" || user.role === "editor" ? (
           <Link className="btn btn-primary" href="/dashboard">
             Open dashboard
           </Link>
         ) : (
-          <Link className="btn btn-primary" href="/tuitions">
-            Browse tuitions
+          <Link className="btn btn-primary" href="/request-tuition">
+            Request tuition
           </Link>
         )}
         <LogoutButton className="w-full" />

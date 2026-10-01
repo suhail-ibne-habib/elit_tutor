@@ -2,6 +2,7 @@ import "../loadEnv.js";
 import { MongoClient } from "mongodb";
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { admin } from "better-auth/plugins";
 import { ROLES } from "../constants.js";
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI, {
@@ -12,11 +13,10 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI, {
 
 const authDb = mongoClient.db(process.env.DB_NAME);
 
-const signupRoles = new Set([ROLES.PARENT, ROLES.TEACHER]);
-const adminEmails = (process.env.ADMIN_EMAILS || "")
-  .split(",")
-  .map((email) => email.trim().toLowerCase())
-  .filter(Boolean);
+const adminEmail = String(process.env.ADMIN_EMAIL || process.env.ADMIN_EMAILS || "")
+  .split(",")[0]
+  ?.trim()
+  .toLowerCase();
 
 export { mongoClient };
 
@@ -28,6 +28,12 @@ export const auth = betterAuth({
     .split(",")
     .map((origin) => origin.trim())
     .filter((origin) => origin && origin !== "*"),
+  plugins: [
+    admin({
+      adminRoles: [ROLES.ADMIN],
+      defaultRole: ROLES.VIEWER,
+    }),
+  ],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 6,
@@ -37,7 +43,7 @@ export const auth = betterAuth({
       role: {
         type: "string",
         required: false,
-        defaultValue: ROLES.PARENT,
+        defaultValue: ROLES.VIEWER,
         input: true,
       },
       phone: {
@@ -52,12 +58,13 @@ export const auth = betterAuth({
       create: {
         before: async (user) => {
           const email = String(user.email || "").toLowerCase();
-          const requestedRole = String(user.role || ROLES.PARENT);
-          const role = adminEmails.includes(email)
-            ? ROLES.ADMIN
-            : signupRoles.has(requestedRole)
-              ? requestedRole
-              : ROLES.PARENT;
+          const requestedRole = String(user.role || ROLES.VIEWER);
+          const role =
+            email && adminEmail && email === adminEmail
+              ? ROLES.ADMIN
+              : requestedRole === ROLES.ADMIN
+                ? ROLES.VIEWER
+                : requestedRole || ROLES.VIEWER;
 
           return {
             data: {

@@ -29,7 +29,7 @@ export function LoginForm({ title = "Sign in", intro }: LoginFormProps) {
   });
 
   useEffect(() => {
-    if (user?.role === "admin") router.replace("/dashboard");
+    if (user?.role === "admin" || user?.role === "editor") router.replace("/dashboard");
     else if (user) router.replace("/");
   }, [user, router]);
 
@@ -38,7 +38,7 @@ export function LoginForm({ title = "Sign in", intro }: LoginFormProps) {
     try {
       await authApi.signIn(values);
       const sessionUser = await refresh();
-      router.push(sessionUser?.role === "admin" ? "/dashboard" : "/");
+      router.push(sessionUser?.role === "admin" || sessionUser?.role === "editor" ? "/dashboard" : "/");
     } catch (err) {
       setError(getError(err));
     }

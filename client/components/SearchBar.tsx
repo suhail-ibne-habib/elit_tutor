@@ -84,10 +84,10 @@ export default function SearchBar({ kind, variant = "hero" }: SearchBarProps) {
         name="q"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search tutor, subject, or area"
+        placeholder={kind === "tuition" ? "Search subject, class, or area" : "Search staff or keyword"}
       />
       <button className="btn btn-primary" type="submit">
-        Search Tutor
+        {kind === "tuition" ? "Search Tuition" : "Search"}
       </button>
     </form>
   );

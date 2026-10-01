@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ApplyNowLink } from "@/components/tuitions/ApplyNowLink";
 import type { Tuition } from "@/lib/api";
 
 type TuitionCardProps = {
@@ -21,9 +21,7 @@ export function TuitionCard({ tuition }: TuitionCardProps) {
         <span>BDT {Number(tuition.salary).toLocaleString()}</span>
         <span>{tuition.schedule || `${tuition.daysPerWeek} days / week`}</span>
       </div>
-      <Link className="btn btn-primary" href="/register">
-        Apply Now
-      </Link>
+      <ApplyNowLink />
     </article>
   );
 }

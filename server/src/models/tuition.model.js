@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ROLES, TUITION_STATUS, TUITION_TYPE } from "../constants.js";
+import { APPROVAL_STATUS, ROLES, TUITION_STATUS, TUITION_TYPE } from "../constants.js";
 
 const tuitionSchema = new mongoose.Schema(
   {
@@ -25,6 +25,22 @@ const tuitionSchema = new mongoose.Schema(
     detail: {
       type: String,
       default: "",
+    },
+    requesterName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    requesterPhone: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    requesterEmail: {
+      type: String,
+      default: "",
+      trim: true,
+      lowercase: true,
     },
     area: {
       type: String,
@@ -57,20 +73,38 @@ const tuitionSchema = new mongoose.Schema(
       default: TUITION_STATUS.OPEN,
       index: true,
     },
+    approvalStatus: {
+      type: String,
+      enum: Object.values(APPROVAL_STATUS),
+      default: APPROVAL_STATUS.PENDING,
+      index: true,
+    },
+    approvedBy: {
+      type: String,
+      default: "",
+    },
+    approvedAt: {
+      type: Date,
+      default: null,
+    },
+    publishedAt: {
+      type: Date,
+      default: null,
+    },
     postedBy: {
       type: String,
-      required: true,
       index: true,
+      default: "",
     },
     postedByRole: {
       type: String,
-      enum: [ROLES.ADMIN, ROLES.PARENT],
-      required: true,
+      enum: [ROLES.ADMIN, ROLES.EDITOR, ""],
+      default: "",
     },
   },
   { timestamps: true },
 );
 
-tuitionSchema.index({ title: 1, area: 1, status: 1 });
+tuitionSchema.index({ title: 1, area: 1, status: 1, approvalStatus: 1 });
 
 export const Tuition = mongoose.models.Tuition || mongoose.model("Tuition", tuitionSchema);

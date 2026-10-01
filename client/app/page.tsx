@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AuthHero } from "@/components/auth/AuthHero";
 import QuoteCard from "@/components/QuoteCard";
 import SearchBarSuspense from "@/components/SearchBarSuspense";
 import StatCounter from "@/components/StatCounter";
@@ -12,13 +11,12 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <div className="kicker">Trusted home tutoring marketplace</div>
-            <h1>Tuition and Tutor Searching & Learning Platform</h1>
+            <div className="kicker">Premium tuition request platform</div>
+            <h1>Request tuition and browse approved jobs</h1>
             <p className="lead">
-              Find verified home tutors, post tuition needs, and start learning faster with Elite’s matching
-              network across Bangladesh.
+              Submit a tuition request for a teacher. Staff review it, then approved jobs appear on the public board.
             </p>
-            <SearchBarSuspense kind="tutor" />
+            <SearchBarSuspense kind="tuition" />
             <div className="chips">
               <span className="chip">English</span>
               <span className="chip">Mathematics</span>
@@ -27,7 +25,12 @@ export default function HomePage() {
               <span className="chip">Admission</span>
             </div>
           </div>
-          <AuthHero />
+          <Link className="entry-card" href="/request-tuition">
+            <img src="/assets/images/logo-mark.png" alt="" />
+            <h3>Request a teacher</h3>
+            <p>Open the tuition request form and share the class, subject, area, and schedule.</p>
+            <span className="btn btn-primary">Open request form</span>
+          </Link>
         </div>
       </section>
 
@@ -36,17 +39,17 @@ export default function HomePage() {
           <article className="stat-card">
             <div className="icon icon-green">★</div>
             <StatCounter value={17} suffix="+" />
-            <span>Years of tutoring support</span>
+            <span>Years of tuition support</span>
           </article>
           <article className="stat-card">
             <div className="icon icon-green">◎</div>
             <StatCounter value={90000} suffix="+" />
-            <span>Happy guardians</span>
+            <span>Supported families</span>
           </article>
           <article className="stat-card">
             <div className="icon icon-green">◉</div>
             <StatCounter value={72187} suffix="+" />
-            <span>Verified tutors</span>
+            <span>Published requests</span>
           </article>
           <article className="stat-card stat-highlight">
             <div>
@@ -63,10 +66,10 @@ export default function HomePage() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-inner">
-            <h2>Need a Home Tutor?</h2>
-            <p>Tell us the class, subject, and area. Elite will match you with available professional tutors.</p>
-            <Link className="btn btn-primary btn-lg" href="/tutors">
-              Find a Tutor
+            <h2>Need tuition for a student?</h2>
+            <p>Submit the subject, class, area, and budget. Staff review each request before it goes live.</p>
+            <Link className="btn btn-primary btn-lg" href="/request-tuition">
+              Request Tuition
             </Link>
           </div>
         </div>
@@ -75,17 +78,17 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>We Provide Professional Tutors</h2>
+            <h2>Flexible tuition formats</h2>
             <p>
-              From school to university admission, Elite connects families with subject specialists who teach at home
-              or online.
+              From school support to admission preparation, Elite helps organize tuition requests across home,
+              online, and group formats.
             </p>
           </div>
           <div className="grid-4">
             <article className="feature-card">
               <div className="icon icon-gold">⌂</div>
               <h3>Home Tutoring</h3>
-              <p>One-to-one lessons at your home with a verified local tutor.</p>
+              <p>One-to-one tuition requests for students who need home-based support.</p>
             </article>
             <article className="feature-card">
               <div className="icon icon-gold">▣</div>
@@ -109,29 +112,29 @@ export default function HomePage() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="section-head">
-            <h2>Our Tutoring Method</h2>
-            <p>A simple platform that keeps guardians, students, and tutors aligned from the first request to the first class.</p>
+            <h2>How Elite works</h2>
+            <p>A simple workflow for collecting tuition requests, reviewing them, and publishing the right opportunities.</p>
           </div>
           <div className="grid-4">
             <article className="feature-card">
               <div className="icon icon-gold">✓</div>
-              <h3>Verified Profiles</h3>
-              <p>Every tutor is reviewed before they can apply for tuition jobs.</p>
+              <h3>Reviewed Requests</h3>
+              <p>Each public tuition request is checked by staff before it appears on the site.</p>
             </article>
             <article className="feature-card">
               <div className="icon icon-gold">⚡</div>
-              <h3>Fast Matching</h3>
-              <p>Get relevant tutor applications based on subject, class, and area.</p>
+              <h3>Fast Publishing</h3>
+              <p>Approved requests are published quickly so opportunities stay current and useful.</p>
             </article>
             <article className="feature-card">
               <div className="icon icon-gold">◎</div>
-              <h3>Secure Process</h3>
-              <p>Keep communication and hiring steps inside one trusted workflow.</p>
+              <h3>Staff Approval</h3>
+              <p>Admin and editors manage approvals from one dedicated dashboard.</p>
             </article>
             <article className="feature-card">
               <div className="icon icon-gold">☎</div>
-              <h3>Support Team</h3>
-              <p>Elite advisors help if you need a replacement or a better match.</p>
+              <h3>Clear Communication</h3>
+              <p>Published jobs include the details needed for fast follow-up and coordination.</p>
             </article>
           </div>
         </div>
@@ -140,15 +143,15 @@ export default function HomePage() {
       <section className="section steps">
         <div className="container">
           <div className="section-head">
-            <h2>How it works for Guardian</h2>
-            <p>Post once, review applications, and start classes without hunting through random contacts.</p>
+            <h2>How it works</h2>
+            <p>Anyone can submit a request, and staff can review and publish it in a few simple steps.</p>
           </div>
           <div className="grid-4">
             {[
               ["1", "Post Requirement", "Share class, subject, salary, and preferred area."],
-              ["2", "Get Tutor List", "Receive applications from available verified tutors."],
-              ["3", "Select a Tutor", "Compare profiles, experience, and demo availability."],
-              ["4", "Start Learning", "Confirm the schedule and begin the first class."],
+              ["2", "Staff Review", "Admin or editors check the request details from the dashboard."],
+              ["3", "Publish Job", "Approved tuition requests appear on the public site."],
+              ["4", "Connect Fast", "Interested people can follow the posted opportunity and WhatsApp updates."],
             ].map(([no, title, text]) => (
               <article className="step-card" key={no}>
                 <span className="step-no">{no}</span>
@@ -165,17 +168,17 @@ export default function HomePage() {
         <div className="container grid-2">
           <div>
             <div className="section-head" style={{ textAlign: "left", margin: "0 0 8px" }}>
-              <h2>Why you take a Tutor from us?</h2>
-              <p>Elite is built for families who want reliable tutors, clear communication, and a premium matching experience.</p>
+              <h2>Why use Elite?</h2>
+              <p>Elite is built for people who want an organized, premium process for publishing and discovering tuition needs.</p>
             </div>
             <div className="checklist">
               <div className="check-item">
                 <i>✓</i>
-                <span>100% premium satisfaction support on every posted job.</span>
+                <span>Public request form with structured details and validation.</span>
               </div>
               <div className="check-item">
                 <i>✓</i>
-                <span>Verified tutors with subject and location filters.</span>
+                <span>Admin and editor approvals before anything goes live.</span>
               </div>
               <div className="check-item">
                 <i>✓</i>
@@ -183,19 +186,19 @@ export default function HomePage() {
               </div>
               <div className="check-item">
                 <i>✓</i>
-                <span>Replacement help if the first match is not the right fit.</span>
+                <span>Public tuition board plus WhatsApp-based follow-up options.</span>
               </div>
             </div>
           </div>
-          <img src="/assets/images/why-us.svg" alt="Guardian reviewing a matched tutor profile" />
+          <img src="/assets/images/why-us.svg" alt="Elite platform overview" />
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>What our valuable guardians say about us?</h2>
-            <p>Parents use Elite to find consistent tutors without wasting weeks on trial and error.</p>
+            <h2>What families say about us</h2>
+            <p>Elite helps families submit clear requirements and find tuition support with less back-and-forth.</p>
           </div>
           <div className="grid-3">
             {guardianQuotes.map((item) => (
@@ -210,8 +213,7 @@ export default function HomePage() {
           <div className="dark-cta">
             <h2>Need tuition?</h2>
             <p>
-              Join Elite as a tutor, complete your profile, and apply to live tuition jobs that match your subjects and
-              preferred areas.
+              Browse approved tuition jobs and join the WhatsApp group if you want to follow live opportunities.
             </p>
             <Link className="btn btn-primary btn-lg" href="/tuitions">
               Browse Tuitions
@@ -224,14 +226,14 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <h2>How to apply for a tuition?</h2>
-            <p>Tutors can start receiving relevant jobs after a short profile setup.</p>
+            <p>Published jobs are reviewed by staff first, then shared publicly for fast follow-up.</p>
           </div>
           <div className="timeline">
             {[
-              ["Create your account", "Register with your email and choose the tutor role."],
-              ["Complete your profile", "Add education, subjects, preferred areas, and expected salary."],
-              ["Apply for jobs", "Filter live tuitions and send applications to matching guardians."],
-              ["Get selected and teach", "Confirm the demo, lock the schedule, and start the tuition."],
+              ["Submit your need", "A requester fills out the public tuition request form."],
+              ["Staff review", "Admin or editors review the request from the dashboard."],
+              ["Job goes live", "Approved requests appear on the public tuition board."],
+              ["Connect fast", "Interested people can follow the published job and WhatsApp group updates."],
             ].map(([title, text]) => (
               <article className="time-item" key={title}>
                 <div className="time-dot" />
@@ -248,8 +250,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>What our Tutors say about us?</h2>
-            <p>Teachers use Elite to find stable tuitions without relying only on word of mouth.</p>
+            <h2>What our community says</h2>
+            <p>People use Elite to keep tuition opportunities organized and easier to discover.</p>
           </div>
           <div className="grid-3">
             {tutorQuotes.map((item) => (

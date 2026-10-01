@@ -1,7 +1,7 @@
 export const ROLES = {
   ADMIN: "admin",
-  PARENT: "parent",
-  TEACHER: "teacher",
+  EDITOR: "editor",
+  VIEWER: "viewer",
 };
 
 export const TUITION_STATUS = {
@@ -10,15 +10,14 @@ export const TUITION_STATUS = {
   FILLED: "filled",
 };
 
+export const APPROVAL_STATUS = {
+  PENDING: "pending",
+  APPROVED: "approved",
+  REJECTED: "rejected",
+};
+
 export const TUITION_TYPE = {
   HOME: "home",
   ONLINE: "online",
   GROUP: "group",
-};
-
-export const APPLICATION_STATUS = {
-  PENDING: "pending",
-  SHORTLISTED: "shortlisted",
-  ACCEPTED: "accepted",
-  REJECTED: "rejected",
 };

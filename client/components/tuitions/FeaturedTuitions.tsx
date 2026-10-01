@@ -11,11 +11,14 @@ function sampleAsTuitions(): Tuition[] {
     classLevel: job.title,
     subjects: [],
     detail: job.detail,
+    requesterName: "Elite visitor",
+    requesterPhone: "Not listed",
     area: job.area,
     salary: Number(job.rate.replace(/[^\d]/g, "")) || 0,
     daysPerWeek: Number(job.schedule.split(" ")[0]) || 4,
     schedule: job.schedule,
     status: "open",
+    approvalStatus: "approved",
     postedByRole: "admin",
   }));
 }
@@ -29,7 +32,7 @@ export async function FeaturedTuitions() {
       <div className="container">
         <div className="section-head">
           <h2>Live tuitions</h2>
-          <p>Open jobs from guardians and Elite. Apply if the class, area, and schedule match your profile.</p>
+          <p>Browse the latest staff-approved tuition requests and open jobs published by Elite.</p>
         </div>
         <div className="grid-3">
           {jobs.map((job) => (

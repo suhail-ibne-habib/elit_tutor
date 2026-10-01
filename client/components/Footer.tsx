@@ -14,13 +14,13 @@ export default function Footer() {
           <Link className="brand" href="/">
             <img src="/assets/images/logo-mark.png" alt="Elite Tuition Media Bangladesh" />
           </Link>
-          <p>A tuition and tutor searching platform for guardians, students, and professional tutors.</p>
+          <p>A tuition request and approval platform for families, students, and Elite staff.</p>
         </div>
         <div>
           <h4>Platform</h4>
           <ul>
             <li>
-              <Link href="/tutors">Find Tutors</Link>
+              <Link href="/request-tuition">Request Tuition</Link>
             </li>
             <li>
               <Link href="/tuitions">Find Tuitions</Link>
@@ -40,7 +40,7 @@ export default function Footer() {
               <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/register">Register</Link>
+              <Link href="/request-tuition">Request Form</Link>
             </li>
           </ul>
         </div>
@@ -48,14 +48,14 @@ export default function Footer() {
           <h4>Office</h4>
           <ul>
             <li>Gulshan, Dhaka</li>
-            <li>hello@elite-tutor.test</li>
+            <li>hello@elite.test</li>
             <li>+880 1700-000000</li>
           </ul>
         </div>
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} Elite. All rights reserved.</span>
-        <span>Tuition · Tutor · Learning</span>
+        <span>Request · Review · Publish</span>
       </div>
     </footer>
   );

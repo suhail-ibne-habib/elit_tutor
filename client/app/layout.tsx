@@ -12,11 +12,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Elite | Tuition and Tutor Searching Platform",
+    default: "Elite | Tuition Request Platform",
     template: "%s | Elite",
   },
   description:
-    "Find verified home tutors, post tuition needs, and start learning faster with Elite.",
+    "Request tuition, review approved tuition jobs, and manage staff approvals with Elite.",
   icons: {
     icon: "/assets/images/favicon.svg",
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={jakarta.className}>
         <Providers>
           <Header />

@@ -115,23 +115,23 @@ export const tuitions = [
 export const guardianQuotes = [
   {
     quote:
-      "We found an English tutor for Class 8 within two days. The process was clear and the tutor was punctual from the first class.",
+      "We submitted a Class 8 English request and saw it published quickly. The process felt clear from start to finish.",
     name: "Nusrat Jahan",
-    role: "Guardian, Dhanmondi",
+    role: "Family, Dhanmondi",
     avatar: "/assets/avatars/a1.svg",
   },
   {
     quote:
-      "The shortlist saved us time. We compared a few Physics tutors and chose one who already knew the school syllabus.",
+      "The structured form saved us time because we could clearly describe the subject, area, and schedule in one place.",
     name: "Mahmud Hasan",
-    role: "Guardian, Uttara",
+    role: "Requester, Uttara",
     avatar: "/assets/avatars/a2.svg",
   },
   {
     quote:
-      "Support helped us replace a tutor quickly when the schedule changed. That flexibility is why we stayed with Elite.",
+      "Support answered our questions fast, and the approval flow made the posted request feel more trustworthy.",
     name: "Farhana Akter",
-    role: "Guardian, Chattogram",
+    role: "Family, Chattogram",
     avatar: "/assets/avatars/a3.svg",
   },
 ];
@@ -139,23 +139,23 @@ export const guardianQuotes = [
 export const tutorQuotes = [
   {
     quote:
-      "I applied to three jobs in my area and got a Mathematics tuition the same week. The job details were accurate.",
+      "The published jobs are easy to scan, and the details are much clearer than random social posts.",
     name: "Rafiul Islam",
-    role: "Math tutor, Mirpur",
+    role: "Community member, Mirpur",
     avatar: "/assets/avatars/a4.svg",
   },
   {
     quote:
-      "The profile review made guardians take my applications more seriously. I now keep two regular evening tuitions.",
+      "I like that only approved requests go live, so the listings feel more reliable and worth following.",
     name: "Sanjida Rahman",
-    role: "English tutor, Sylhet",
+    role: "Community member, Sylhet",
     avatar: "/assets/avatars/a2.svg",
   },
   {
     quote:
-      "No more guessing which families are actually hiring. I only apply to jobs that match my subjects and travel range.",
+      "The public board and WhatsApp follow-up make it much easier to keep up with active tuition opportunities.",
     name: "Tanvir Ahmed",
-    role: "ICT tutor, Rajshahi",
+    role: "Community member, Rajshahi",
     avatar: "/assets/avatars/a1.svg",
   },
 ];

@@ -25,7 +25,7 @@ export type AuthUser = {
   id: string;
   name: string;
   email: string;
-  role: "admin" | "parent" | "teacher";
+  role: "admin" | "editor" | "viewer";
   phone?: string;
   image?: string;
 };
@@ -37,8 +37,6 @@ type ApiEnvelope<T> = {
 };
 
 export const authApi = {
-  signUp: (payload: { name: string; email: string; password: string; role: "parent" | "teacher"; phone?: string }) =>
-    api.post("/api/auth/sign-up/email", payload),
   signIn: (payload: { email: string; password: string }) => api.post("/api/auth/sign-in/email", payload),
   signOut: () => api.post("/api/auth/sign-out"),
   me: () => api.get<ApiEnvelope<{ user: AuthUser }>>("/api/session/me"),
@@ -51,18 +49,47 @@ export type Tuition = {
   classLevel: string;
   subjects: string[];
   detail: string;
+  requesterName: string;
+  requesterPhone: string;
+  requesterEmail?: string;
   area: string;
   salary: number;
   daysPerWeek: number;
   schedule: string;
   status: "open" | "closed" | "filled";
-  postedByRole: "admin" | "parent";
+  approvalStatus: "pending" | "approved" | "rejected";
+  postedByRole: "admin" | "editor" | "";
+  approvedBy?: string;
+  approvedAt?: string | null;
+  publishedAt?: string | null;
 };
 
 export const tuitionApi = {
   list: () => api.get<ApiEnvelope<Tuition[]>>("/api/tuitions"),
-  create: (payload: Record<string, unknown>) => api.post<ApiEnvelope<Tuition>>("/api/tuitions", payload),
+  listDashboard: (approvalStatus?: string) =>
+    api.get<ApiEnvelope<Tuition[]>>("/api/tuitions/dashboard", {
+      params: approvalStatus ? { approvalStatus } : undefined,
+    }),
+  createRequest: (payload: Record<string, unknown>) => api.post<ApiEnvelope<Tuition>>("/api/tuitions/requests", payload),
+  createAdmin: (payload: Record<string, unknown>) => api.post<ApiEnvelope<Tuition>>("/api/tuitions", payload),
+  approve: (id: string) => api.patch<ApiEnvelope<Tuition>>(`/api/tuitions/${id}/approval`, { approvalStatus: "approved" }),
+  reject: (id: string) => api.patch<ApiEnvelope<Tuition>>(`/api/tuitions/${id}/approval`, { approvalStatus: "rejected" }),
+  update: (id: string, payload: Record<string, unknown>) => api.patch<ApiEnvelope<Tuition>>(`/api/tuitions/${id}`, payload),
   remove: (id: string) => api.delete(`/api/tuitions/${id}`),
+};
+
+export type StaffUser = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  banned?: boolean;
+};
+
+export const staffApi = {
+  inviteEditor: (payload: { name: string; email: string; password: string }) =>
+    api.post("/api/auth/admin/create-user", { ...payload, role: "editor" }),
+  listUsers: () => api.get<{ users: StaffUser[] }>("/api/auth/admin/list-users"),
 };
 
 export async function getPublicTuitions(): Promise<Tuition[]> {

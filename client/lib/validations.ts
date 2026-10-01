@@ -5,12 +5,10 @@ export const loginSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters."),
 });
 
-export const registerSchema = z
+export const inviteEditorSchema = z
   .object({
     name: z.string().min(2, "Enter your full name."),
     email: z.string().email("Enter a valid email."),
-    phone: z.string().optional(),
-    role: z.enum(["parent", "teacher"]),
     password: z.string().min(6, "Password must be at least 6 characters."),
     confirm: z.string().min(6, "Confirm your password."),
   })
@@ -24,6 +22,9 @@ export const tuitionSchema = z.object({
   type: z.enum(["home", "online", "group"]),
   classLevel: z.string().min(1, "Class is required."),
   subjects: z.string().min(1, "Add at least one subject."),
+  requesterName: z.string().min(2, "Requester name is required."),
+  requesterPhone: z.string().min(7, "Phone is required."),
+  requesterEmail: z.union([z.string().email("Enter a valid email."), z.literal("")]).optional(),
   area: z.string().min(2, "Area is required."),
   salary: z
     .string()
@@ -41,5 +42,5 @@ export const tuitionSchema = z.object({
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;
-export type RegisterValues = z.infer<typeof registerSchema>;
+export type InviteEditorValues = z.infer<typeof inviteEditorSchema>;
 export type TuitionValues = z.infer<typeof tuitionSchema>;

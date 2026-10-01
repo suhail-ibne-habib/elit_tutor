@@ -15,13 +15,13 @@ export function AdminGuard({ children }: { children: ReactNode }) {
       router.replace("/login");
       return;
     }
-    if (user.role !== "admin") {
+    if (user.role !== "admin" && user.role !== "editor") {
       router.replace("/");
     }
   }, [loading, user, router]);
 
-  if (loading || !user || user.role !== "admin") {
-    return <p className="p-8 text-sm text-muted-foreground">Checking admin access...</p>;
+  if (loading || !user || (user.role !== "admin" && user.role !== "editor")) {
+    return <p className="p-8 text-sm text-muted-foreground">Checking staff access...</p>;
   }
 
   return <>{children}</>;

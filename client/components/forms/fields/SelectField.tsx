@@ -24,7 +24,7 @@ export function SelectField({ name, label, options }: SelectFieldProps) {
           <select
             id={name}
             className={cn(
-              "flex h-11 w-full rounded-xl border border-input bg-secondary px-3 text-sm outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-green-100",
+              "flex h-11 w-full rounded-xl border border-solid border-input bg-secondary px-3 text-sm outline-none transition focus:border-primary focus:bg-background focus:ring-4 focus:ring-yellow-200",
             )}
             {...field}
             value={field.value ?? ""}

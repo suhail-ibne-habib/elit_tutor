@@ -1,31 +1,26 @@
 import { Router } from "express";
 import {
-  createTuition,
+  createAdminTuition,
+  createPublicRequest,
   deleteTuition,
   getTuition,
-  listMyTuitions,
-  listTuitions,
+  listDashboardTuitions,
+  listPublicTuitions,
+  updateApprovalStatus,
   updateTuition,
 } from "../controllers/tuition.controller.js";
-import { applyToTuition, listTuitionApplications } from "../controllers/application.controller.js";
 import { optionalAuth, requireAuth, requireRole } from "../middlewares/auth.middleware.js";
 import { ROLES } from "../constants.js";
 
 const router = Router();
 
-router.get("/", optionalAuth, listTuitions);
-router.get("/mine", requireAuth, requireRole(ROLES.PARENT, ROLES.ADMIN), listMyTuitions);
+router.get("/", optionalAuth, listPublicTuitions);
+router.get("/dashboard", requireAuth, requireRole(ROLES.ADMIN, ROLES.EDITOR), listDashboardTuitions);
+router.post("/requests", createPublicRequest);
 router.get("/:id", getTuition);
-router.post("/", requireAuth, requireRole(ROLES.PARENT, ROLES.ADMIN), createTuition);
-router.patch("/:id", requireAuth, requireRole(ROLES.PARENT, ROLES.ADMIN), updateTuition);
-router.delete("/:id", requireAuth, requireRole(ROLES.PARENT, ROLES.ADMIN), deleteTuition);
-
-router.post("/:id/applications", requireAuth, requireRole(ROLES.TEACHER), applyToTuition);
-router.get(
-  "/:id/applications",
-  requireAuth,
-  requireRole(ROLES.PARENT, ROLES.ADMIN),
-  listTuitionApplications,
-);
+router.post("/", requireAuth, requireRole(ROLES.ADMIN), createAdminTuition);
+router.patch("/:id", requireAuth, requireRole(ROLES.ADMIN, ROLES.EDITOR), updateTuition);
+router.patch("/:id/approval", requireAuth, requireRole(ROLES.ADMIN, ROLES.EDITOR), updateApprovalStatus);
+router.delete("/:id", requireAuth, requireRole(ROLES.ADMIN, ROLES.EDITOR), deleteTuition);
 
 export default router;

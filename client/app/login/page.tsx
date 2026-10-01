@@ -12,9 +12,10 @@ export default function LoginPage() {
         <div className="container auth-page">
           <div>
             <div className="kicker">Welcome back</div>
-            <h1>Login to Elite</h1>
+            <h1>Staff login</h1>
             <p className="lead">
-              Guardians can manage tuition posts. Tutors can apply to live jobs and update availability.
+              Admins and invited editors can review tuition requests, publish approved jobs, and manage the public
+              listings.
             </p>
             <img src="/assets/images/hero-device.svg" alt="Elite login preview" style={{ marginTop: 28 }} />
           </div>

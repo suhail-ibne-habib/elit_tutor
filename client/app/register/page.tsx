@@ -11,19 +11,20 @@ export default function RegisterPage() {
       <section className="section">
         <div className="container auth-page">
           <div>
-            <div className="kicker">Create your account</div>
-            <h1>Join as a parent or teacher</h1>
+            <div className="kicker">Staff access only</div>
+            <h1>Admin and editor accounts are invite-only</h1>
             <p className="lead">
-              Register once, then post tuition requirements or apply to jobs from the same Elite account.
+              Public visitors can request tuition directly from the site. Only invited staff members need login
+              accounts.
             </p>
             <div className="checklist">
               <div className="check-item">
                 <i>✓</i>
-                <span>Parents can hire faster with verified applications.</span>
+                <span>Anyone can submit a tuition request without registration.</span>
               </div>
               <div className="check-item">
                 <i>✓</i>
-                <span>Teachers can open a profile and apply to live jobs.</span>
+                <span>Admins can invite editors from the dashboard.</span>
               </div>
             </div>
           </div>

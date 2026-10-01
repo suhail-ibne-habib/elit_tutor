@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AdminDashboard } from "@/components/dashboard/AdminDashboard";
 
 export const metadata: Metadata = {
-  title: "Admin dashboard",
+  title: "Staff dashboard",
 };
 
 export default function DashboardPage() {

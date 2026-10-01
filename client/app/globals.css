@@ -3,40 +3,63 @@
 @tailwind utilities;
 
 :root {
-  --green: #16a34a;
-  --green-dark: #15803d;
-  --green-deep: #052e16;
-  --green-ink: #0a2014;
-  --green-soft: #f0fdf4;
-  --green-line: #dcfce7;
+  --green: #facc15;
+  --green-dark: #eab308;
+  --green-deep: #ca8a04;
+  --green-ink: #111111;
+  --green-soft: #fef9c3;
+  --green-line: #fde68a;
   --gold: #facc15;
   --gold-soft: #fef9c3;
-  --ink: #0f172a;
+  --ink: #171717;
   --muted: #64748b;
   --line: #e2e8f0;
   --paper: #ffffff;
-  --wash: #f8fafc;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.1);
+  --wash: #fffbeb;
+  --shadow: 0 10px 30px rgba(23, 23, 23, 0.08);
+  --shadow-lg: 0 24px 60px rgba(23, 23, 23, 0.14);
   --radius: 22px;
   --max: 1180px;
   --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
+  --foreground: 0 0% 10%;
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --primary: 142 71% 36%;
+  --card-foreground: 0 0% 10%;
+  --primary: 48 96% 53%;
   --primary-foreground: 0 0% 12.5%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222 47% 11%;
-  --muted-hsl: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 142 76% 94%;
-  --accent-foreground: 142 72% 29%;
+  --secondary: 48 100% 96%;
+  --secondary-foreground: 0 0% 10%;
+  --muted-hsl: 48 100% 96%;
+  --muted-foreground: 0 0% 35%;
+  --accent: 48 100% 90%;
+  --accent-foreground: 0 0% 12%;
   --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 100%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 142 71% 36%;
+  --border: 48 30% 82%;
+  --input: 48 30% 82%;
+  --ring: 48 96% 53%;
+}
+
+.dark {
+  --ink: #fafafa;
+  --muted: #a3a3a3;
+  --line: #404040;
+  --paper: #09090b;
+  --wash: #171717;
+  --background: 0 0% 6%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 98%;
+  --primary: 48 96% 53%;
+  --primary-foreground: 0 0% 8%;
+  --secondary: 0 0% 13%;
+  --secondary-foreground: 0 0% 96%;
+  --muted-hsl: 0 0% 13%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 48 40% 20%;
+  --accent-foreground: 48 100% 90%;
+  --border: 0 0% 24%;
+  --input: 0 0% 24%;
+  --ring: 48 96% 53%;
 }
 
 *,
@@ -56,6 +79,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 img {
@@ -73,6 +97,7 @@ input,
 select,
 textarea {
   font: inherit;
+  border-style: solid;
 }
 
 .container {
@@ -127,7 +152,7 @@ textarea {
 
 .nav-links a:hover,
 .nav-links a.is-active {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .nav-actions {
@@ -171,7 +196,7 @@ textarea {
 .btn-primary {
   background: var(--green);
   color: #202020;
-  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.28);
 }
 
 .btn-primary:hover {
@@ -283,13 +308,45 @@ textarea {
   font-weight: 600;
 }
 
-.auth-card {
-  background: #fff;
+.auth-card,
+.entry-card {
+  background: var(--paper);
+  color: var(--ink);
   border-radius: 28px;
   padding: 32px 28px;
   box-shadow: var(--shadow-lg);
-  border: 1px solid #f1f5f9;
+  border: 1px solid var(--line);
+}
+
+.auth-card {
   text-align: center;
+}
+
+.entry-card {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.entry-card:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.entry-card img {
+  width: auto;
+  height: 88px;
+}
+
+.entry-card h3 {
+  font-size: 1.45rem;
+}
+
+.entry-card p {
+  color: var(--muted);
+  max-width: 34ch;
 }
 
 .auth-card img.logo-lg {
@@ -300,6 +357,16 @@ textarea {
 
 .auth-card h3 {
   margin-bottom: 6px;
+}
+
+.auth-card.request-card {
+  text-align: left;
+}
+
+.auth-card.request-card .logo-lg,
+.auth-card.request-card h3,
+.auth-card.request-card .tiny {
+  text-align: center;
 }
 
 .field {
@@ -328,9 +395,9 @@ textarea {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: #86efac;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+  border-color: var(--green);
+  background: var(--paper);
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.22);
 }
 
 .auth-card .btn {
