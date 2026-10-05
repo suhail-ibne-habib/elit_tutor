@@ -11,11 +11,8 @@ export default function ContactPage() {
       <section className="page-hero">
         <div className="container">
           <div className="kicker">Support</div>
-          <h1>Talk to the Elite team</h1>
-          <p>
-            Need help posting a tuition request or understanding the approval flow? Send a message and we will reply
-            within a day.
-          </p>
+          <h1>Contact Elite Tuition Media</h1>
+          <p>Call or WhatsApp 01989562718 for tuition details, tutor requests, and office information.</p>
         </div>
       </section>
       <section className="section">

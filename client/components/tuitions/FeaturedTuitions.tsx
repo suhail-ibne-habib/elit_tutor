@@ -17,6 +17,7 @@ function sampleAsTuitions(): Tuition[] {
     salary: Number(job.rate.replace(/[^\d]/g, "")) || 0,
     daysPerWeek: Number(job.schedule.split(" ")[0]) || 4,
     schedule: job.schedule,
+    tutorGenderPreference: "any",
     status: "open",
     approvalStatus: "approved",
     postedByRole: "admin",
@@ -31,8 +32,8 @@ export async function FeaturedTuitions() {
     <section className="section" style={{ paddingTop: 0 }}>
       <div className="container">
         <div className="section-head">
-          <h2>Live tuitions</h2>
-          <p>Browse the latest staff-approved tuition requests and open jobs published by Elite.</p>
+          <h2>Find tuition</h2>
+          <p>Respected tutors, you can easily choose the right tuition from the approved listings below.</p>
         </div>
         <div className="grid-3">
           {jobs.map((job) => (

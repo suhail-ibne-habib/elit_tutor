@@ -12,11 +12,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Elite | Tuition Request Platform",
+    default: "Elite Tuition Media | Connecting the Right Tutor with the Right Student",
     template: "%s | Elite",
   },
   description:
-    "Request tuition, review approved tuition jobs, and manage staff approvals with Elite.",
+    "Elite Tuition Media, Bangladesh connects students and guardians with suitable tutors.",
   icons: {
     icon: "/assets/images/favicon.svg",
   },

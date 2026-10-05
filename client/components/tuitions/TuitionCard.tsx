@@ -2,7 +2,10 @@ import { ApplyNowLink } from "@/components/tuitions/ApplyNowLink";
 import type { Tuition } from "@/lib/api";
 
 type TuitionCardProps = {
-  tuition: Pick<Tuition, "title" | "type" | "classLevel" | "subjects" | "detail" | "area" | "salary" | "daysPerWeek" | "schedule">;
+  tuition: Pick<
+    Tuition,
+    "title" | "type" | "classLevel" | "subjects" | "detail" | "area" | "salary" | "daysPerWeek" | "schedule" | "tutorGenderPreference"
+  >;
 };
 
 export function TuitionCard({ tuition }: TuitionCardProps) {
@@ -13,6 +16,9 @@ export function TuitionCard({ tuition }: TuitionCardProps) {
       <div className="mb-3 flex flex-wrap gap-2">
         <span className="badge">{tuition.type}</span>
         {tuition.classLevel ? <span className="badge">{tuition.classLevel}</span> : null}
+        {tuition.tutorGenderPreference && tuition.tutorGenderPreference !== "any" ? (
+          <span className="badge">{tuition.tutorGenderPreference} tutor</span>
+        ) : null}
       </div>
       <h3>{tuition.title}</h3>
       {detail ? <p>{detail}</p> : null}

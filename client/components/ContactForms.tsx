@@ -1,91 +1,37 @@
-"use client";
-
-import { FormEvent, useState } from "react";
+import Link from "next/link";
+import { site } from "@/lib/site";
 
 export default function ContactForms() {
-  const [contactError, setContactError] = useState("");
-  const [contactOk, setContactOk] = useState("");
-  const [applyError, setApplyError] = useState("");
-  const [applyOk, setApplyOk] = useState("");
-
-  function onContact(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    if (!data.name || !data.email || !data.message) {
-      setContactOk("");
-      setContactError("Please fill in your name, email, and message.");
-      return;
-    }
-    event.currentTarget.reset();
-    setContactError("");
-    setContactOk("Thanks. Our support team will reply within 24 hours.");
-  }
-
-  function onApply(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    if (!data.subject || !data.area) {
-      setApplyOk("");
-      setApplyError("Choose a subject and area so we can review the request faster.");
-      return;
-    }
-    setApplyError("");
-    setApplyOk("Requirement captured. Submit the full tuition request form to send it for staff approval.");
-  }
-
   return (
     <div className="container contact-wrap">
-      <form className="form-card auth-card" onSubmit={onContact}>
-        <h3>Send a message</h3>
-        <div className="field">
-          <label htmlFor="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" />
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@email.com" />
-        </div>
-        <div className="field">
-          <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" rows={5} placeholder="How can we help?" />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Submit
-        </button>
-        <p className={`form-error${contactError ? " is-visible" : ""}`}>{contactError}</p>
-        <p className={`form-ok${contactOk ? " is-visible" : ""}`}>{contactOk}</p>
-      </form>
-      <aside>
-        <article className="info-card">
-          <h3>Office</h3>
-          <p>Gulshan, Dhaka, Bangladesh</p>
-          <p className="tiny">Sunday to Thursday, 10:00 AM - 6:00 PM</p>
-        </article>
-        <article className="info-card" style={{ marginTop: 16 }}>
-          <h3>Post a requirement</h3>
-          <form onSubmit={onApply}>
-            <div className="field">
-              <label htmlFor="subject">Subject</label>
-              <select id="subject" name="subject" defaultValue="">
-                <option value="">Choose a subject</option>
-                <option>English</option>
-                <option>Mathematics</option>
-                <option>Physics</option>
-                <option>ICT</option>
-              </select>
-            </div>
-            <div className="field">
-              <label htmlFor="area">Area</label>
-              <input id="area" name="area" type="text" placeholder="Dhanmondi" />
-            </div>
-            <button className="btn btn-dark" type="submit">
-              Post Requirement
-            </button>
-            <p className={`form-error${applyError ? " is-visible" : ""}`}>{applyError}</p>
-            <p className={`form-ok${applyOk ? " is-visible" : ""}`}>{applyOk}</p>
-          </form>
-        </article>
-      </aside>
+      <article className="info-card">
+        <h3>Contact</h3>
+        <p>
+          Call: <a href={site.phoneHref}>{site.phone}</a>
+        </p>
+        <p>
+          WhatsApp:{" "}
+          <a href={site.whatsapp} target="_blank" rel="noreferrer">
+            {site.phone}
+          </a>
+        </p>
+        <p>
+          Facebook:{" "}
+          <a href={site.facebook} target="_blank" rel="noreferrer">
+            Elite Tuition Media
+          </a>
+        </p>
+        <Link className="btn btn-primary" href="/request-tuition" style={{ marginTop: 16 }}>
+          Request form for tutor
+        </Link>
+      </article>
+      <article className="info-card">
+        <h3>Office</h3>
+        {site.offices.map((office) => (
+          <p key={office}>{office}</p>
+        ))}
+        <p className="tiny">For details, please call: {site.phone}</p>
+      </article>
     </div>
   );
 }

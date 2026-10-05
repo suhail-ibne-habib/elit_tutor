@@ -5,7 +5,7 @@ type ApplyNowLinkProps = {
 };
 
 const whatsappGroupUrl =
-  process.env.NEXT_PUBLIC_WHATSAPP_GROUP_URL || "https://chat.whatsapp.com/your-group-invite-link";
+  process.env.NEXT_PUBLIC_WHATSAPP_GROUP_URL || "https://chat.whatsapp.com/JdeX3siGPIKEz54H93SEBW";
 
 export function ApplyNowLink({ className = "btn btn-primary" }: ApplyNowLinkProps) {
   return (

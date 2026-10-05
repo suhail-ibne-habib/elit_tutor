@@ -18,18 +18,8 @@ export const inviteEditorSchema = z
   });
 
 export const tuitionSchema = z.object({
-  title: z.string().min(3, "Add a tuition title."),
-  type: z.enum(["home", "online", "group"]),
   classLevel: z.string().min(1, "Class is required."),
   subjects: z.string().min(1, "Add at least one subject."),
-  requesterName: z.string().min(2, "Requester name is required."),
-  requesterPhone: z.string().min(7, "Phone is required."),
-  requesterEmail: z.union([z.string().email("Enter a valid email."), z.literal("")]).optional(),
-  area: z.string().min(2, "Area is required."),
-  salary: z
-    .string()
-    .min(1, "Salary is required.")
-    .refine((value) => Number(value) > 0, "Salary is required."),
   daysPerWeek: z
     .string()
     .min(1, "Days per week is required.")
@@ -37,8 +27,13 @@ export const tuitionSchema = z.object({
       const days = Number(value);
       return days >= 1 && days <= 7;
     }, "Use 1 to 7 days."),
-  schedule: z.string().optional(),
-  detail: z.string().optional(),
+  tutorGender: z.enum(["male", "female", "any"]),
+  area: z.string().min(2, "Location is required."),
+  salary: z
+    .string()
+    .min(1, "Salary is required.")
+    .refine((value) => Number(value) > 0, "Salary is required."),
+  requesterPhone: z.string().min(11, "Enter a valid contact number."),
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;

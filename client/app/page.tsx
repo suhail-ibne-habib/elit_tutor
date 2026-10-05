@@ -11,10 +11,11 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <div className="kicker">Premium tuition request platform</div>
-            <h1>Request tuition and browse approved jobs</h1>
+            <div className="kicker">Elite Tuition Media, Bangladesh</div>
+            <h1>Connecting the Right Tutor with the Right Student.</h1>
             <p className="lead">
-              Submit a tuition request for a teacher. Staff review it, then approved jobs appear on the public board.
+              Guardians can request a suitable tutor. Tutors can choose approved tuition opportunities by class,
+              subject, and location.
             </p>
             <SearchBarSuspense kind="tuition" />
             <div className="chips">
@@ -27,8 +28,8 @@ export default function HomePage() {
           </div>
           <Link className="entry-card" href="/request-tuition">
             <img src="/assets/images/logo-mark.png" alt="" />
-            <h3>Request a teacher</h3>
-            <p>Open the tuition request form and share the class, subject, area, and schedule.</p>
+            <h3>Request form for tutor</h3>
+            <p>Share class, subjects, days, tutor gender, location, salary, and contact number.</p>
             <span className="btn btn-primary">Open request form</span>
           </Link>
         </div>
@@ -78,33 +79,24 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>Flexible tuition formats</h2>
-            <p>
-              From school support to admission preparation, Elite helps organize tuition requests across home,
-              online, and group formats.
-            </p>
+            <h2>Our services</h2>
+            <p>Home, online, school, college, and HSC tuition, plus matching for guardians and tutors.</p>
           </div>
-          <div className="grid-4">
-            <article className="feature-card">
-              <div className="icon icon-gold">⌂</div>
-              <h3>Home Tutoring</h3>
-              <p>One-to-one tuition requests for students who need home-based support.</p>
-            </article>
-            <article className="feature-card">
-              <div className="icon icon-gold">▣</div>
-              <h3>Online Tutoring</h3>
-              <p>Flexible live classes for students who prefer remote learning.</p>
-            </article>
-            <article className="feature-card">
-              <div className="icon icon-gold">≡</div>
-              <h3>Group Tuition</h3>
-              <p>Small batch coaching for classmates who want shared sessions.</p>
-            </article>
-            <article className="feature-card">
-              <div className="icon icon-gold">✎</div>
-              <h3>Exam Preparation</h3>
-              <p>Focused support for SSC, HSC, admission, and university exams.</p>
-            </article>
+          <div className="grid-3">
+            {[
+              ["Home Tuition", "One-to-one tuition at the student's home."],
+              ["Online Tuition", "Live classes for students who prefer remote learning."],
+              ["School & College Tuition", "Support matched to the class and syllabus."],
+              ["HSC Tuition", "Focused help for higher secondary subjects."],
+              ["Qualified Tutor Matching", "Tutors matched by class, subject, location, and budget."],
+              ["Tuition Opportunities for Tutors", "Approved jobs tutors can choose from the public board."],
+            ].map(([title, text]) => (
+              <article className="feature-card" key={title}>
+                <div className="icon icon-gold">✓</div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

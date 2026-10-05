@@ -11,10 +11,11 @@ export default function RequestTuitionPage() {
       <section className="section">
         <div className="container auth-page">
           <div>
-            <div className="kicker">Public tuition request</div>
-            <h1>Request a teacher</h1>
+            <div className="kicker">Request form for tutor</div>
+            <h1>Request a tutor</h1>
             <p className="lead">
-              Fill in the tuition details and our staff will review the request before publishing it on the site.
+              Share the class, subjects, days, tutor gender, location, salary, and contact number. Staff review the
+              request before it is published for tutors.
             </p>
             <div className="checklist">
               <div className="check-item">
@@ -33,8 +34,8 @@ export default function RequestTuitionPage() {
           </div>
           <div className="auth-card request-card">
             <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
-            <h3>Tuition request form</h3>
-            <p className="tiny">No account is required. Approved requests appear on the public board.</p>
+            <h3>Request form for tutor</h3>
+            <p className="tiny">No account is required. Approved requests appear on Find Tuition.</p>
             <TuitionForm />
           </div>
         </div>

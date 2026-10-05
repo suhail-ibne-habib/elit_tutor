@@ -14,23 +14,32 @@ const toSubjects = (value) =>
         .map((item) => item.trim())
         .filter(Boolean);
 
-const buildTuitionPayload = (body) => ({
-  title: body.title,
-  type: body.type,
-  classLevel: body.classLevel,
-  subjects: toSubjects(body.subjects),
-  detail: body.detail || "",
-  requesterName: body.requesterName,
-  requesterPhone: body.requesterPhone,
-  requesterEmail: body.requesterEmail || "",
-  area: body.area,
-  salary: Number(body.salary),
-  daysPerWeek: body.daysPerWeek ? Number(body.daysPerWeek) : 4,
-  schedule: body.schedule || "",
-  studentGender: body.studentGender || "",
-  tutorGenderPreference: body.tutorGenderPreference || "any",
-  status: body.status || TUITION_STATUS.OPEN,
-});
+const buildTuitionPayload = (body) => {
+  const subjects = toSubjects(body.subjects);
+  const classLevel = String(body.classLevel || "").trim();
+  const title =
+    String(body.title || "").trim() ||
+    [classLevel, subjects.join(", ")].filter(Boolean).join(" — ") ||
+    "Tuition request";
+
+  return {
+    title,
+    type: body.type || "home",
+    classLevel,
+    subjects,
+    detail: body.detail || "",
+    requesterName: body.requesterName || "Guardian",
+    requesterPhone: body.requesterPhone,
+    requesterEmail: body.requesterEmail || "",
+    area: body.area,
+    salary: Number(body.salary),
+    daysPerWeek: body.daysPerWeek ? Number(body.daysPerWeek) : 4,
+    schedule: body.schedule || "",
+    studentGender: body.studentGender || "",
+    tutorGenderPreference: body.tutorGender || body.tutorGenderPreference || "any",
+    status: body.status || TUITION_STATUS.OPEN,
+  };
+};
 
 const canManageTuition = (user) => STAFF_ROLES.has(user?.role);
 
@@ -91,9 +100,9 @@ export const getTuition = asyncHandler(async (req, res) => {
 });
 
 export const createPublicRequest = asyncHandler(async (req, res) => {
-  const { title, classLevel, area, salary, requesterName, requesterPhone } = req.body;
-  if (!title || !classLevel || !area || salary == null || !requesterName || !requesterPhone) {
-    throw new ApiError(400, "Requester name, phone, title, class, area, and salary are required.");
+  const { classLevel, area, salary, requesterPhone, subjects } = req.body;
+  if (!classLevel || toSubjects(subjects).length === 0 || !area || salary == null || !requesterPhone) {
+    throw new ApiError(400, "Class, subjects, location, salary, and contact number are required.");
   }
 
   const tuition = await Tuition.create({
@@ -105,9 +114,9 @@ export const createPublicRequest = asyncHandler(async (req, res) => {
 });
 
 export const createAdminTuition = asyncHandler(async (req, res) => {
-  const { title, classLevel, area, salary, requesterName, requesterPhone } = req.body;
-  if (!title || !classLevel || !area || salary == null || !requesterName || !requesterPhone) {
-    throw new ApiError(400, "Requester name, phone, title, class, area, and salary are required.");
+  const { classLevel, area, salary, requesterPhone, subjects } = req.body;
+  if (!classLevel || toSubjects(subjects).length === 0 || !area || salary == null || !requesterPhone) {
+    throw new ApiError(400, "Class, subjects, location, salary, and contact number are required.");
   }
 
   const now = new Date();

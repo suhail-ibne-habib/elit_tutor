@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { site } from "@/lib/site";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -14,48 +15,53 @@ export default function Footer() {
           <Link className="brand" href="/">
             <img src="/assets/images/logo-mark.png" alt="Elite Tuition Media Bangladesh" />
           </Link>
-          <p>A tuition request and approval platform for families, students, and Elite staff.</p>
+          <p>{site.tagline}</p>
         </div>
         <div>
           <h4>Platform</h4>
           <ul>
             <li>
-              <Link href="/request-tuition">Request Tuition</Link>
+              <Link href="/request-tuition">Request Form</Link>
             </li>
             <li>
               <Link href="/tuitions">Find Tuitions</Link>
             </li>
             <li>
-              <Link href="/about">How Elite works</Link>
+              <Link href="/about">About</Link>
             </li>
           </ul>
         </div>
         <div>
-          <h4>Support</h4>
+          <h4>Contact</h4>
           <ul>
             <li>
-              <Link href="/contact">Contact</Link>
+              <a href={site.phoneHref}>Call: {site.phone}</a>
             </li>
             <li>
-              <Link href="/login">Login</Link>
+              <a href={site.whatsapp} target="_blank" rel="noreferrer">
+                WhatsApp: {site.phone}
+              </a>
             </li>
             <li>
-              <Link href="/request-tuition">Request Form</Link>
+              <a href={site.facebook} target="_blank" rel="noreferrer">
+                Facebook page
+              </a>
             </li>
           </ul>
         </div>
         <div>
           <h4>Office</h4>
           <ul>
-            <li>Gulshan, Dhaka</li>
-            <li>hello@elite.test</li>
-            <li>+880 1700-000000</li>
+            {site.offices.map((office) => (
+              <li key={office}>{office}</li>
+            ))}
+            <li>For details, please call: {site.phone}</li>
           </ul>
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Elite. All rights reserved.</span>
-        <span>Request · Review · Publish</span>
+        <span>© {new Date().getFullYear()} Elite Tuition Media, Bangladesh.</span>
+        <span>{site.tagline}</span>
       </div>
     </footer>
   );

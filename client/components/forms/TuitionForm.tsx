@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AppForm } from "@/components/forms/AppForm";
 import { FormAlert } from "@/components/forms/FormAlert";
 import { SelectField } from "@/components/forms/fields/SelectField";
-import { TextareaField } from "@/components/forms/fields/TextareaField";
 import { TextField } from "@/components/forms/fields/TextField";
 import { Button } from "@/components/ui/button";
 import { tuitionApi } from "@/lib/api";
@@ -24,18 +23,13 @@ export function TuitionForm({ mode = "request", onCreated }: TuitionFormProps) {
   const form = useForm<TuitionValues>({
     resolver: zodResolver(tuitionSchema),
     defaultValues: {
-      title: "",
-      type: "home",
       classLevel: "",
       subjects: "",
-      requesterName: "",
-      requesterPhone: "",
-      requesterEmail: "",
+      daysPerWeek: "4",
+      tutorGender: "any",
       area: "",
       salary: "",
-      daysPerWeek: "4",
-      schedule: "",
-      detail: "",
+      requesterPhone: "",
     },
   });
 
@@ -44,10 +38,13 @@ export function TuitionForm({ mode = "request", onCreated }: TuitionFormProps) {
     setSuccess("");
     try {
       const payload = {
-        ...values,
+        classLevel: values.classLevel,
         subjects: values.subjects.split(",").map((item) => item.trim()).filter(Boolean),
-        salary: Number(values.salary),
         daysPerWeek: Number(values.daysPerWeek),
+        tutorGender: values.tutorGender,
+        area: values.area,
+        salary: Number(values.salary),
+        requesterPhone: values.requesterPhone,
       };
 
       if (mode === "admin") {
@@ -67,29 +64,22 @@ export function TuitionForm({ mode = "request", onCreated }: TuitionFormProps) {
 
   return (
     <AppForm form={form} onSubmit={onSubmit} className="grid gap-4 md:grid-cols-2">
-      <div className="md:col-span-2">
-        <TextField name="title" label="Title" placeholder="Class 8 Mathematics" />
-      </div>
+      <TextField name="classLevel" label="Class" placeholder="Class 8 / SSC / HSC" />
+      <TextField name="subjects" label="Subjects" placeholder="Math, Physics" />
+      <TextField name="daysPerWeek" label="Days per week" type="number" />
       <SelectField
-        name="type"
-        label="Type"
+        name="tutorGender"
+        label="Tutor gender"
         options={[
-          { value: "home", label: "Home" },
-          { value: "online", label: "Online" },
-          { value: "group", label: "Group" },
+          { value: "any", label: "Any" },
+          { value: "male", label: "Male" },
+          { value: "female", label: "Female" },
         ]}
       />
-      <TextField name="classLevel" label="Class" placeholder="SSC / Class 8" />
-      <TextField name="subjects" label="Subjects" placeholder="Math, Physics" />
-      <TextField name="requesterName" label="Requester name" placeholder="Guardian / requester name" />
-      <TextField name="requesterPhone" label="Phone" placeholder="01XXXXXXXXX" />
-      <TextField name="requesterEmail" label="Email (optional)" type="email" placeholder="you@email.com" />
-      <TextField name="area" label="Area" placeholder="Dhanmondi" />
-      <TextField name="salary" label="Salary (BDT)" type="number" />
-      <TextField name="daysPerWeek" label="Days per week" type="number" />
-      <TextField name="schedule" label="Schedule" placeholder="Evening, 4 days" />
+      <TextField name="area" label="Location" placeholder="Chawkbazar, Chittagong" />
+      <TextField name="salary" label="Salary" type="number" />
       <div className="md:col-span-2">
-        <TextareaField name="detail" label="Details" placeholder="Describe the tuition need, goals, or preferred teaching style" />
+        <TextField name="requesterPhone" label="Contact no" placeholder="01989562718" />
       </div>
       <div className="md:col-span-2 grid gap-3">
         <FormAlert error={error} success={success} />

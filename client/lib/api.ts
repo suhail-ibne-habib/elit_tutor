@@ -56,6 +56,7 @@ export type Tuition = {
   salary: number;
   daysPerWeek: number;
   schedule: string;
+  tutorGenderPreference?: string;
   status: "open" | "closed" | "filled";
   approvalStatus: "pending" | "approved" | "rejected";
   postedByRole: "admin" | "editor" | "";

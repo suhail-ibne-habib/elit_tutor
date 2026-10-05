@@ -39,8 +39,8 @@ export function TuitionList({
               {tuition.classLevel} · {tuition.area} · BDT {tuition.salary}
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Requester: {tuition.requesterName} · {tuition.requesterPhone}
-              {tuition.requesterEmail ? ` · ${tuition.requesterEmail}` : ""}
+              {tuition.daysPerWeek} days / week
+              {tuition.tutorGenderPreference ? ` · ${tuition.tutorGenderPreference} tutor` : ""} · {tuition.requesterPhone}
             </p>
             {tuition.detail ? <p className="mt-2 text-sm text-muted-foreground">{tuition.detail}</p> : null}
           </div>
