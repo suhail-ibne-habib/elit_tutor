@@ -781,6 +781,99 @@ textarea {
   margin: 10px 0 16px;
 }
 
+.contact-band {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(250, 204, 21, 0.16), transparent 28%),
+    #111111;
+  color: #fff;
+  padding: 72px 0;
+}
+
+.contact-band-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.contact-kicker {
+  color: #facc15;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.contact-band h1 {
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  max-width: 12ch;
+}
+
+.contact-band p {
+  color: #d6d3d1;
+  margin-top: 16px;
+  max-width: 46ch;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.contact-call {
+  background: #fff;
+  color: #202020;
+}
+
+.contact-call:hover {
+  background: #f5f5f5;
+}
+
+.contact-whatsapp {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.contact-whatsapp:hover {
+  border-color: #facc15;
+  color: #facc15;
+}
+
+.contact-band aside {
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  padding-left: 36px;
+}
+
+.contact-band aside a.contact-number {
+  display: block;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.contact-band aside ul {
+  list-style: none;
+  margin-top: 22px;
+}
+
+.contact-band aside li {
+  color: #e7e5e4;
+  margin-top: 10px;
+}
+
+.contact-band aside a {
+  color: #facc15;
+  font-weight: 700;
+}
+
 .contact-wrap,
 .auth-page {
   display: grid;
@@ -891,11 +984,19 @@ textarea {
   .grid-3,
   .grid-2,
   .stats-row,
+  .contact-band-grid,
   .contact-wrap,
   .auth-page,
   .footer-grid,
   .filters {
     grid-template-columns: 1fr;
+  }
+
+  .contact-band aside {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-left: 0;
+    padding-top: 28px;
   }
 
   .hero h1 {
