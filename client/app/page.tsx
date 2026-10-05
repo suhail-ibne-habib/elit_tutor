@@ -1,6 +1,5 @@
 import Link from "next/link";
 import QuoteCard from "@/components/QuoteCard";
-import SearchBarSuspense from "@/components/SearchBarSuspense";
 import StatCounter from "@/components/StatCounter";
 import { FeaturedTuitions } from "@/components/tuitions/FeaturedTuitions";
 import { guardianQuotes, tutorQuotes } from "@/lib/data";
@@ -17,8 +16,7 @@ export default function HomePage() {
               Guardians can request a suitable tutor. Tutors can choose approved tuition opportunities by class,
               subject, and location.
             </p>
-            <SearchBarSuspense kind="tuition" />
-            <div className="chips">
+            <div className="chips" style={{ marginTop: 24 }}>
               <span className="chip">English</span>
               <span className="chip">Mathematics</span>
               <span className="chip">Physics</span>
@@ -208,7 +206,7 @@ export default function HomePage() {
               Browse approved tuition jobs and join the WhatsApp group if you want to follow live opportunities.
             </p>
             <Link className="btn btn-primary btn-lg" href="/tuitions">
-              Browse Tuitions
+              Find Tutor
             </Link>
           </div>
         </div>

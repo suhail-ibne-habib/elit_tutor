@@ -24,7 +24,7 @@ export default function Footer() {
               <Link href="/request-tuition">Request Form</Link>
             </li>
             <li>
-              <Link href="/tuitions">Find Tuitions</Link>
+              <Link href="/tuitions">Find Tutor</Link>
             </li>
             <li>
               <Link href="/about">About</Link>

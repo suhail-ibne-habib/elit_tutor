@@ -35,7 +35,7 @@ export default function RequestTuitionPage() {
           <div className="auth-card request-card">
             <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
             <h3>Request form for tutor</h3>
-            <p className="tiny">No account is required. Approved requests appear on Find Tuition.</p>
+            <p className="tiny">No account is required. Approved requests appear on Find Tutor.</p>
             <TuitionForm />
           </div>
         </div>

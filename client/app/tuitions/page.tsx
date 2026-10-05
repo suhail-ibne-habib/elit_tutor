@@ -4,7 +4,7 @@ import { TuitionCard } from "@/components/tuitions/TuitionCard";
 import { getPublicTuitions } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Find Tuitions",
+  title: "Find Tutor",
 };
 
 type TuitionsPageProps = {

@@ -42,7 +42,7 @@ export async function FeaturedTuitions() {
         </div>
         <div style={{ marginTop: 28, textAlign: "center" }}>
           <Link className="btn btn-ghost" href="/tuitions">
-            View all tuitions
+            Find Tutor
           </Link>
         </div>
       </div>
