@@ -32,8 +32,8 @@ export async function FeaturedTuitions() {
     <section className="section" style={{ paddingTop: 0 }}>
       <div className="container">
         <div className="section-head">
-          <h2>Find tuition</h2>
-          <p>Respected tutors, you can easily choose the right tuition from the approved listings below.</p>
+          <h2>Need tuitions</h2>
+          <p>Looking for a tuition job? Choose an approved listing and apply through the WhatsApp group.</p>
         </div>
         <div className="grid-3">
           {jobs.map((job) => (
@@ -42,7 +42,7 @@ export async function FeaturedTuitions() {
         </div>
         <div style={{ marginTop: 28, textAlign: "center" }}>
           <Link className="btn btn-ghost" href="/tuitions">
-            Find Tutor
+            Need Tuitions
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { TuitionForm } from "@/components/forms/TuitionForm";
 
 export const metadata: Metadata = {
-  title: "Request Tuition",
+  title: "Find Tutor",
 };
 
 export default function RequestTuitionPage() {
@@ -11,11 +11,11 @@ export default function RequestTuitionPage() {
       <section className="section">
         <div className="container auth-page">
           <div>
-            <div className="kicker">Request form for tutor</div>
-            <h1>Request a tutor</h1>
+            <div className="kicker">For guardians</div>
+            <h1>Find a tutor</h1>
             <p className="lead">
-              Share the class, subjects, days, tutor gender, location, salary, and contact number. Staff review the
-              request before it is published for tutors.
+              Guardians can request a tutor here. Share the class, subjects, days, tutor gender, location, salary, and
+              contact number. Staff review the request before it is published.
             </p>
             <div className="checklist">
               <div className="check-item">
@@ -34,8 +34,8 @@ export default function RequestTuitionPage() {
           </div>
           <div className="auth-card request-card">
             <img className="logo-lg" src="/assets/images/logo-mark.png" alt="" />
-            <h3>Request form for tutor</h3>
-            <p className="tiny">No account is required. Approved requests appear on Find Tutor.</p>
+            <h3>Find tutor form</h3>
+            <p className="tiny">No account is required. Approved requests appear on Need Tuitions.</p>
             <TuitionForm />
           </div>
         </div>

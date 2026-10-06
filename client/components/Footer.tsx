@@ -21,10 +21,10 @@ export default function Footer() {
           <h4>Platform</h4>
           <ul>
             <li>
-              <Link href="/request-tuition">Request Form</Link>
+              <Link href="/request-tuition">Find Tutor</Link>
             </li>
             <li>
-              <Link href="/tuitions">Find Tutor</Link>
+              <Link href="/tuitions">Need Tuitions</Link>
             </li>
             <li>
               <Link href="/about">About</Link>

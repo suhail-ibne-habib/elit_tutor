@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import SearchBarSuspense from "@/components/SearchBarSuspense";
 import { TuitionCard } from "@/components/tuitions/TuitionCard";
 import { getPublicTuitions } from "@/lib/api";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Find Tutor",
+  title: "Need Tuitions",
 };
 
 type TuitionsPageProps = {
@@ -23,9 +24,15 @@ export default async function TuitionsPage({ searchParams }: TuitionsPageProps) 
     <main>
       <section className="page-hero">
         <div className="container">
-          <div className="kicker">Find tuition</div>
-          <h1>Choose the right tuition</h1>
-          <p>Respected tutors, you can easily choose the right tuition from the approved listings below.</p>
+          <div className="kicker">For tutors</div>
+          <h1>Need tuitions</h1>
+          <p>If you are looking for a tuition job, choose an approved listing below and apply through the WhatsApp group.</p>
+          <p>
+            WhatsApp group:{" "}
+            <a href={site.whatsappGroup} target="_blank" rel="noreferrer">
+              {site.whatsappGroup}
+            </a>
+          </p>
           <SearchBarSuspense kind="tuition" variant="filters" />
         </div>
       </section>

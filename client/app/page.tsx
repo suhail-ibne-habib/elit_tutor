@@ -26,9 +26,9 @@ export default function HomePage() {
           </div>
           <Link className="entry-card" href="/request-tuition">
             <img src="/assets/images/logo-mark.png" alt="" />
-            <h3>Request form for tutor</h3>
-            <p>Share class, subjects, days, tutor gender, location, salary, and contact number.</p>
-            <span className="btn btn-primary">Open request form</span>
+            <h3>Find a tutor</h3>
+            <p>Guardians can request a tutor with class, subjects, location, salary, and contact number.</p>
+            <span className="btn btn-primary">Open find tutor form</span>
           </Link>
         </div>
       </section>
@@ -65,10 +65,10 @@ export default function HomePage() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-inner">
-            <h2>Need tuition for a student?</h2>
-            <p>Submit the subject, class, area, and budget. Staff review each request before it goes live.</p>
+            <h2>Looking for a tutor?</h2>
+            <p>Guardians can fill the find tutor form with class, subject, location, and budget.</p>
             <Link className="btn btn-primary btn-lg" href="/request-tuition">
-              Request Tuition
+              Find Tutor
             </Link>
           </div>
         </div>
@@ -201,12 +201,10 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="dark-cta">
-            <h2>Need tuition?</h2>
-            <p>
-              Browse approved tuition jobs and join the WhatsApp group if you want to follow live opportunities.
-            </p>
+            <h2>Need a tuition job?</h2>
+            <p>Browse approved tuitions and apply through the WhatsApp group.</p>
             <Link className="btn btn-primary btn-lg" href="/tuitions">
-              Find Tutor
+              Need Tuitions
             </Link>
           </div>
         </div>
